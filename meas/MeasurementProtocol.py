@@ -15,6 +15,12 @@ Under the hood hardware and recording are detached from each other,
 but in the code you won't feel this.
 
 See exp/ for examples.
+
+
+IMPORTANT:
+Note, in the current state this is set up for a Windows machine.
+For Mac and Linux you have to replace r'\\' by r'/'; the two systems name directories differently.
+
 '''
 
 from __future__ import division # old: int division (1/4=0); future: float division (1/4=0.25)
@@ -168,7 +174,7 @@ def read_from_file(full_file_path,col=0,foo=lambda x:x):
 def main():
     import VECSELSetupFake as V # test only with fake setup.
     pm = V.PowerMeter('','')
-    test = Meter(pm,'test',r'/Users/stefan/Master_Thesis/13_Setup/30_Automation/10_PyMeasurements/temp/')
+    test = Meter(pm,'test',r'C:\temp\')
     test.open_file('10_')
     test.measure_to_file()
     print test.close_file()
