@@ -24,7 +24,7 @@ from github,
   3. copy the folder to where ever you want it
   4. adjust the [Pythonpath](http://lmgtfy.com/?q=how+to+adjust+pythonpath)
 
-(at least, that's the proper way to do it).
+(at least, that's the proper way to do it).  
 And, if you are familliar with git ... you know what to do.
 
 If you don't care about "proper"
@@ -33,7 +33,7 @@ and you simply want it to work
 after extracting the .zip,
 copy the folder to (something like; if you work with Anaconda as recomended above)
   * Windows: C:\Anaconda\Lib\site-packages
-  * Mac: /Users/yourusername/anaconda/Lib/python2.7/site-packages
+  * Mac: /Users/yourusername/anaconda/Lib/python2.7/site-packages  
 this path is already in the Pythonpath
 and Python will find it.
 
