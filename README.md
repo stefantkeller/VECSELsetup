@@ -23,8 +23,10 @@ from github,
   2. extract the .zip
   3. copy the folder to where ever you want it
   4. adjust the [Pythonpath](http://lmgtfy.com/?q=how+to+adjust+pythonpath)
+
 (at least, that's the proper way to do it).
 And, if you are familliar with git ... you know what to do.
+
 If you don't care about "proper"
 and you simply want it to work
 (I don't know though what this breaks along the way...):  
