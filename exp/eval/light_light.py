@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import errorvalues as ev # github.com/stefantkeller/errorvalues
 
 from VECSELsetup.eval.varycolor import varycolor
-from VECSELsetup.eval.gen_functions import load, extract, plotinstructions_write, plotinstructions_read, lut_from_calibfolder, lut_interp_from_calibfolder, thermal_impedance, thermal_resistance
+from VECSELsetup.eval.gen_functions import load, extract, plotinstructions_write, plotinstructions_read, lut_from_calibfolder, lut_interp_from_calibfolder, thermal_resistance
 
 
 def main():
@@ -15,8 +15,8 @@ def main():
     #   run eval_spectrum.py to provide the .._eval.csv files required for the spectra
     #   run calibration.py (with appropriate calib measurements)
     # and don't forget temperature_heatsink (this is not necessary for this script here, but it provides interesting insights for the measurement at hand)
-    logfile = '20150204_calib_333um_s21-1-d6/4_emission_calib.csv'
-    calib_folder = '20150204_calib_333um_s21-1-d6'
+    logfile = '../24_LL_ev/20150211_sample21-1-d6/spot333um.csv'
+    calib_folder = '../24_LL_ev/20150204_calib_333um_s21-1-d6'
     
     
     #------------------------------------
@@ -194,8 +194,6 @@ def main():
     wavelength = ev.errvallist([q3[T] for T in plot_temps_for_3]) # wavelength offsets
     slopes = ev.errvallist([m3[T] for T in plot_temps_for_3]) # slopes
     T_active = ev.errvallist([T_out[T] for T in plot_temps_for_3])
-    # Z = thermal_impedance(T_active,wavelength,slopes) # brute force approach
-    #print T_active, wavelength, slopes
     
     dldD, dldT, l0 = thermal_resistance(T_active,wavelength,slopes) #, R_th
     R_th = dldD/dldT
@@ -215,9 +213,8 @@ def main():
     print therm_imp
 
     
-    if use_realtemperatures:
-        for T in Temperatures:
-            print meantemp[T]
+    for T in Temperatures:
+        print meantemp[T]
     
     plt.show()
 
