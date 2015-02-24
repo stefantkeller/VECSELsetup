@@ -71,7 +71,7 @@ Routine:
     !!!    on interruption, either willingly or because of what ever, the pump must go off! !!!
 
 
-The calibration in calibration in eval/calibration.py needs the following 4 files.
+The calibration in calibration in exp/eval/calibration.py needs the following 4 files.
 Between these measurements you move only the thermal power meter to different positions, do not touch the other equipment.
 With this procedure we gauge the photo detectors (after beam splitters to protect from high power) to the thermal power meter.
 When placing the thermal power meter, you have to make sure the exposure is below its damage threshold.
