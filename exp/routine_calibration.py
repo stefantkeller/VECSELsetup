@@ -69,6 +69,45 @@ Routine:
 
     !!!    at any point of this routine the measurement has to be able to be cancled,       !!!
     !!!    on interruption, either willingly or because of what ever, the pump must go off! !!!
+
+
+The calibration in calibration in eval/calibration.py needs the following 4 files.
+Between these measurements you move only the thermal power meter to different positions, do not touch the other equipment.
+With this procedure we gauge the photo detectors (after beam splitters to protect from high power) to the thermal power meter.
+When placing the thermal power meter, you have to make sure the exposure is below its damage threshold.
+A Thorlabs thermal power meter S314C for example has a power range limited up to 40W.
+  * '1_pump_calib.csv'
+  * '2_refl_calib.csv'
+  * '3_emission_calib.csv'
+  * '4_emission_calib.csv'
+
+  '1_pump_calib.csv':
+    Place the thermal power meter at the sample position; position 1.
+    Choose the variable pump_end equal to the pump current corresponding to the maximally allowed pump power (or less, to be on the safe side).
+    (Note: pump_end will be lower than the maximum pump during actual operation.
+    This is made possible because there is a linear relation between pump current and the power seen at position 1.
+    We're going to extrapolate based on this linear relationship. Ensure yourself, this is actually linear!
+    (Otherwise you have to find a new solution how to do the job.))
+
+  '2_refl_calib.csv':
+    Thermal power meter goes in the reflection channel, between collimating lens and beam sampler; position 2.
+    Variable pump_end now determines up to what power you can calibrate the setup over all.
+    Make sure the power exposure at this point doesn't exceed the power range of the power meter.
+    Caveat: If you replace the sample under test without changing the alignment you can in principle use an old calibration.
+    But, if this sample has a higher reflectivity, you run the risk of entering an uncalibrated range.
+
+  '3_emission_calib.csv':
+    Thermal power meter goes at its final position in the laser emission path; position 3.
+
+  '4_emission_calib.csv':
+    Thermal power meter goes at its final position in the laser emission path; position 3.
+    The difference to measurement 3: now there is also the beam sampler extracting a fraction of the light for the spectrometer.
+    Measurement 3 and 4 allow you to find the influence of said beam sampler.
+
+In practice you will probably gather these four measurement in reverse order.
+After you have conducted the measurements (e.g. with routine_measurement.py), you run this script for 4, remove the spectrometer beam sampler and measure 3, and so on.
+This way you're sure to account for the actual alignment present during the measurements.
+
 """
 
 
