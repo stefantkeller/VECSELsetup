@@ -16,7 +16,7 @@ Installation
 This is a Python library.
 If you don't have Python installed yet,
 I recommend you install [Anaconda](http://continuum.io/downloads)
-for Python 2.7 (for free!).
+for Python 2.7 (it's free!).
 
 To install this library
 from github,
@@ -33,16 +33,21 @@ and you simply want it to work
 (I don't know though what this breaks along the way...):  
 after extracting the .zip,
 copy the folder to (something like; if you work with Anaconda as recommended above)
-  * Windows: C:\Anaconda\Lib\site-packages
-  * Mac: /Users/yourusername/anaconda/Lib/python2.7/site-packages  
-this path is already in the Pythonpath
+  * Windows: `C:\Anaconda\Lib\site-packages`
+  * Mac: `/Users/yourusername/anaconda/Lib/python2.7/site-packages`  
+this path is already in the Pythonpath,
 and Python will find it.
 
 
-For evaluation (the stuff in "eval/") you need to also install
+For evaluation (the stuff in `eval/`) you need to also install
 [errorvalues](https://github.com/stefantkeller/errorvalues)
 from github.com/stefantkeller/errorvalues --
 with the same procedure as listed above.
+
+If you intend to use the calibration in `exp/eval/calibration.py` as it is,
+this is going to write an automated report (tuck together some plots) as a pdf;
+ready for print.
+This relys on [LaTeX](https://en.wikipedia.org/wiki/LaTeX) (pdflatex) to be installed on your system.
 
 
 File hierarchy
@@ -57,6 +62,10 @@ The different folders have different purposes:
 
 Usage
 ----
+
+Copy the files stored from the folder `exp` in your working directory.
+The example `exp/meas/routine_measurement.py` is the most exhaustive for setup control / recording measurements.
+While `exp/eval/light_light.py` highlights the evaluation part.
 
 There is not graphical user interface (GUI),
 as one might know from [LabView](http://www.ni.com/labview).
