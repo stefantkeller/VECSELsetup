@@ -1,0 +1,58 @@
+\documentclass[11pt, a4paper, twoside]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{dsfont} %double dashed fonts%
+\usepackage[english]{babel}
+\usepackage[pdftex]{graphicx}
+\usepackage{color}
+\usepackage{subfigure}
+\usepackage{listings}
+\usepackage[colorlinks]{hyperref}
+\usepackage[small]{caption}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds}
+\usepackage[hmarginratio=1:2,vmargin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\e}{\mathrm{e}} % exponential e
+\renewcommand{\d}{\mathrm{d}} % for derivatives
+\renewcommand{\vec}[1]{{\boldsymbol #1}}
+\newcommand{\dd}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\degr}[1]{$#1\,^\circ\mathrm{C}$}
+
+\newcommand{\Rth}{R_\mathrm{th}} % to be used within $$!
+\newcommand{\Ths}{T_\mathrm{hs}} % to be used within $$!
+
+\numberwithin{equation}{section} %https://www.physicsforums.com/threads/numbering-the-equations-in-latex.324808/
+%\numberwithin{equation}{subsection}
+\numberwithin{table}{section}
+\numberwithin{figure}{section}
+
+\title{Manual: Performance of wafer-fused VECSEL under high power operation}
+\author{Stefan Keller}
+\date{\today}
+
+\begin{document}
+\maketitle
+\fancyhead[LE]{Manual: VECSEL high power performance}
+\fancyhead[LO]{\leftmark}
+\fancyhead[R]{Stefan Keller}
+
+\begin{abstract}
+tbd
+\end{abstract}
+
+%\newpage
+\tableofcontents\newpage
+
+\input{src/measroutine}
+
+\newpage
+\input{src/bib}
+
+\end{document}
