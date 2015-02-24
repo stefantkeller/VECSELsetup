@@ -174,7 +174,7 @@ def read_from_file(full_file_path,col=0,foo=lambda x:x):
 def main():
     import VECSELSetupFake as V # test only with fake setup.
     pm = V.PowerMeter('','')
-    test = Meter(pm,'test',r'C:\temp\')
+    test = Meter(pm,'test',r'C:\temp')
     test.open_file('10_')
     test.measure_to_file()
     print test.close_file()
