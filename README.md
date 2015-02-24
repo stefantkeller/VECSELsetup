@@ -39,6 +39,9 @@ this path is already in the Pythonpath,
 and Python will find it.
 
 
+For measurements (the stuff in `meas/`) you need
+[pyvisa](https://pyvisa.readthedocs.org/en/master/).
+
 For evaluation (the stuff in `eval/`) you need to also install
 [errorvalues](https://github.com/stefantkeller/errorvalues)
 from github.com/stefantkeller/errorvalues --
@@ -49,6 +52,13 @@ this is going to write an automated report (tuck together some plots) as a pdf;
 ready for print.
 This relys on [LaTeX](https://en.wikipedia.org/wiki/LaTeX) (pdflatex) to be installed on your system.
 
+If measurement and evaluation happens on two different computers (recommended)
+you probably install only those dependencies that you need.
+That's ok, the error handling in `__init__.py` catches ImportError's and ignores them.
+However, if nothing happens at all,
+you might want to check whether you have installed,
+what you're supposed to have installed
+(maybe everything is caught and subsequentially ignored?).
 
 File hierarchy
 ------------
