@@ -25,7 +25,7 @@ fail at this point.
 \label{sec:routine:routine}
 
 You either look at the example
-given in ``exp/eval/routine\_measurement.py''
+given in \code{exp/eval/routine\_measurement.py}
 and read it through,
 or you continue to read here.
 The following long text covers the same.
@@ -129,7 +129,7 @@ Left: A ramp. Right: Random sampling.}
 
 \begin{figure}
 \centering
-\includegraphics[width=15cm]{img/random_sampling_heatsink.png}
+\includegraphics[width=7cm]{img/random_sampling_heatsink.png}
 \caption{The heat sink temperature fluctuates over time (left).
 Thanks to the random sampling addressed in Fig.~\ref{img:random_sampling}
 the measurements don't see these drifts (right).}
@@ -177,7 +177,7 @@ This routine is illustrated in Fig.~\ref{img:temproutine}.
 
 \begin{figure}
 \centering
-\includegraphics[width=12.5cm]{img/temp_wrap.png}
+\includegraphics[width=7cm]{img/temp_wrap.png}
 \caption{An example of how a given temperature range is wrapped around the room temperature
 (here assumed to be \degr{20}).}
 \label{img:temproutine}
@@ -214,6 +214,21 @@ is directly related with the
 unbiased standard error (\ref{eq:sterr}),
 used for the rest of the report.
 
+Working with errorbars on data
+is tedious.
+Not only do you have to
+manipulate the data themselves,
+you always have to carry with you
+the uncertainty value
+associated with each of the data points.
+This is why the evaluation scripts
+rely heavily on errorvalues;
+a python library designed for
+lazy people who don't want to
+keep track of the uncertainties by hand
+(\code{https://github.com/stefantkeller/errorvalues}).
+
+
 \subsection{Safety precautions}
 \label{sec:routine:safety}
 
@@ -233,11 +248,11 @@ In software we can try to mitigate
 potential problems through proper error handling.
 I don't know how this would be done in LabView.
 In Matlab and Python this is performed through so-called
-try/catch and try/except handles, respectively.
+\code{try}/\code{catch} and \code{try}/\code{except} handles, respectively.
 With it I have implemented that if anything goes wrong software side,
 the power source is shut down
 (This order itself is so low-level,
-that it \textit{should} always work.).
+that it \emph{should} always work.).
 For example, one of the devices could send an unexpected answer,
 the heat sink doesn't reach its requested temperature within reasonable time, etc.
 For the unlikely event
@@ -269,8 +284,32 @@ As soon as the power source applies a certain specified voltage
 the laser warning turns on.
 During the measurements this safety sign therefore
 is always on.
+Our setup is not fit for an inter-lock solution,
+hence the safety responsibility lies solely on you,
+the operator.
+This means,
+you have to wear you safety goggles,
+and the setup is to be closed up,
+Fig.~\ref{img:setup_enclosure}.
 
-As a second safety precaution I supply a script that allows us to test 
+\begin{figure}
+\centering
+\includegraphics[width=7cm]{img/setup_enclosure.jpg}
+\caption{During operation the setup
+has to protect the 
+Along the primary beam line we use a beam dump.
+None the less, there is a lot of scattered light
+and reflections from everywhere.
+To cope with that,
+close the walls and cover.
+The curtain allows you to reach into the setup,
+in order to align the xyz-stage
+during high power operation.}
+\label{img:setup_enclosure}
+\end{figure}
+
+As a second safety precaution
+\code{exp/meas/VECSELSetupFake.py} allows us to test 
 modifications on the measurement routine with fake devices.
 In order to connect the measurement routine with the measurement devices
 we have to specify a protocol.

@@ -27,6 +27,7 @@
 
 \newcommand{\Rth}{R_\mathrm{th}} % to be used within $$!
 \newcommand{\Ths}{T_\mathrm{hs}} % to be used within $$!
+\newcommand{\code}[1]{\texttt{#1}}
 
 \numberwithin{equation}{section} %https://www.physicsforums.com/threads/numbering-the-equations-in-latex.324808/
 %\numberwithin{equation}{subsection}
@@ -44,7 +45,7 @@
 \fancyhead[R]{Stefan Keller}
 
 \begin{abstract}
-github.com/stefantkeller/VECSELsetup
+\code{github.com/stefantkeller/VECSELsetup}
 \end{abstract}
 
 %\newpage
@@ -53,8 +54,10 @@ github.com/stefantkeller/VECSELsetup
 \input{src/intro}
 \input{src/measroutine}
 \input{src/calib}
+\input{src/alignment}
+\input{src/microscopy}
 
-\newpage
+%\newpage
 \input{src/bib}
 
 \end{document}
