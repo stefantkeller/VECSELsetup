@@ -31,8 +31,8 @@ Plus, the header provides you with all sorts of additional information.
 
 
 def main():
-    logfile = '/path/24_LL_ev/20150204_sample21-1-d6/spot333um.csv'
-    calib_folder = '/path/24_LL_ev/20150204_calib_333um_s21-1-d6'
+    logfile = r'/path/24_LL_ev/20150204_sample21-1-d6/spot333um.csv' # note: the r in front of the string is important!
+    calib_folder = r'/path/24_LL_ev/20150204_calib_333um_s21-1-d6' # with the r'' notation the string is interpreted raw; as opposed to interpreting e.g. '\t' as a tabulator
     
     
     #------------------------------------
