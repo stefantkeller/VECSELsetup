@@ -1,6 +1,9 @@
 #! /usr/bin/python2.7
 # -*- coding: utf-8 -*-
 
+from os import listdir
+from os.path import exists
+
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
@@ -21,7 +24,7 @@ then the newly created 150_OSA_eval.csv contains current and wavelength.
 '''
 
 
-def plot_overview_spectra(collection_path, spectra_path, temperature):
+def _plot_overview_spectra(collection_path, spectra_path, temperature):
     currents, wavelengths, spectra = overview_spectra(collection_path, spectra_path)
     plt.clf()
     for j in xrange(len(currents)):
@@ -37,11 +40,19 @@ def plot_overview_spectra(collection_path, spectra_path, temperature):
     plt.clf()
     return plot_path
 
+def spectra_evaluated(pwr_folder):
+    # returns True or False, depending on whether or not the spectra are already evaluated
+    evaluated = True
+    pwr_folder_content = listdir(pwr_folder)
+    for f in pwr_folder_content:
+        if f.endswith('OSA.csv'):
+            basename = ''.join(f.split('.')[:-1])
+            evalfile = ''.join([basename,'_eval.csv'])
+            evalfilepath = '/'.join([pwr_folder,evalfile])
+            evaluated = evaluated and exists( evalfilepath ) # True if _eval.csv exists for all OSA.csv files
+    return evaluated
 
-
-def main():
-    logfile = '20150124_detailed/spot333um_noOC.csv'
-
+def eval_spectra(logfile):
 
     rootpath = '/'.join(logfile.split('/')[:-1])
     with open(logfile,'rb') as lf:
@@ -79,11 +90,15 @@ def main():
                     ef.write(u'{0},{1},{2}\n'.format(currents[j],lambda_shorts[j],lambda_longs[j]))
             
             # secondly, store an image summarizing the spectra
-            plot_file = plot_overview_spectra(spcollection, spectr_root, T)
+            plot_file = _plot_overview_spectra(spcollection, spectr_root, T)
 
             print 'Evaluation written:', eval_file, plot_file
     print 'Spectra evaluated:', logfile
     
+
+def main():
+    logfile = '20150124_detailed/spot333um_noOC.csv'
+    eval_spectra(logfile)
 
 
 if __name__ == "__main__":
