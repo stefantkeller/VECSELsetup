@@ -31,8 +31,8 @@ Plus, the header provides you with all sorts of additional information.
 
 
 def main():
-    logfile = '/home/stefan/Dokumente/ETH/Master/40_Master_Thesis/24_LL_ev/20150204_sample21-1-d6/spot333um.csv'
-    calib_folder = '/home/stefan/Dokumente/ETH/Master/40_Master_Thesis/24_LL_ev/20150204_calib_333um_s21-1-d6'
+    logfile = '/path/24_LL_ev/20150204_sample21-1-d6/spot333um.csv'
+    calib_folder = '/path/24_LL_ev/20150204_calib_333um_s21-1-d6'
     
     
     #------------------------------------
@@ -40,6 +40,10 @@ def main():
     #------------------------------------
     #------------------------------------
     #------------------------------------
+
+    # Windows can also handle '/', which is easier to deal with than '\', which needs escaping every now and then (i.e. '\\')
+    logfile = logfile.replace('\\','/')
+    calib_folder = calib_folder.replace('\\','/')
 
     # see whether calibration is already evaluated, do it if not
     if not exists(calib_folder+'/LUTs'):
