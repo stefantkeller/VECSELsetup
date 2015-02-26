@@ -49,7 +49,7 @@ Routine:
           the logfile knows the filenames of these measurement files, during evaluation the eval-script will work with this
 
     Parameter preparation
-        * duplicate laser_current by the number of repetition
+        * multiply laser_current by the number of repetition
 
     Init power meters (PMs) and power source (PS):
         PM: set number of averages, power auto range, wavelength

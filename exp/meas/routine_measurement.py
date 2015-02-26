@@ -44,7 +44,7 @@ Routine:
           the logfile knows the filenames of these measurement files, during evaluation the eval-script will work with this
 
     Parameter preparation
-        * duplicate laser_current by the number of repetition
+        * multiply laser_current by the number of repetition
         * arange temperatures such that half of the points are visited on way up, other half on the way down:
           measure half and 'verify' with second half; up and down should be on same line unless we underestimated the influence of temp cycle
           to save time: wrap around room temperature, i.e. start at room temperature, go up, go down, come back to room temperature
