@@ -1,0 +1,29 @@
+\section{Refresher}
+
+This section is for
+if your computer is already set up,
+the measurement routine
+is adapted to your needs,
+and you simply want to refresh
+your memory how to get (re)started.
+
+\begin{enumerate}
+  \item record a measurement with \code{routine\_measurement.py} \\
+         i.e. adjust the variables \code{samplename}, 
+         \code{path\_to\_meas\_folder}, \code{heatsink\_start},
+         \code{pump\_end}, \code{use\_spectrometer},
+         \code{shuffle\_pump} \\
+         (as explained in section~\ref{sec:routine})
+  \item calibrate the setup with \code{routine\_calibration.py} \\
+         If you still have a valid calibration you can skip this.
+         But if you didn't measure for a while, you probably want to recalibrate!
+         (as explained in section~\ref{sec:calib})
+  \item evaluate the measurement with \code{light\_light\_to\_file.py}
+         specify the path to the measurement logfile \code{logfile}
+         and the path to the calibration data \code{calib\_folder}.
+         This script returns a file that you can open for example with Excel;
+         the top row states all sorts of information,
+         what were the measurement conditions,
+         and what the columns mean at all.
+\end{enumerate}
+
