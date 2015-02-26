@@ -51,8 +51,7 @@ After you have conducted the measurements (e.g. with routine_measurement.py), yo
 This way you're sure to account for the actual alignment present during the measurements.
 '''
 
-def main():
-    calib_folder = '20150123_calib_333um'
+def calibrate(calib_folder):
 
     # ---------------------------------------------
     
@@ -137,6 +136,10 @@ def main():
         write_report(plot_list)
     else:
         print 'No plots to plot, no report printed.'
+
+def main():
+    calib_folder = '20150123_calib_333um'
+    calibrate(calib_folder)
 
 
 if __name__ == "__main__":
