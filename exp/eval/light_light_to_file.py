@@ -72,7 +72,6 @@ def main():
         current_set, current, pump, refl, laser, meantemp = extract(logfile, identifiers=['Current','Pump','Refl','Laser','Temperature'])
     Temperatures = sorted(current_set.keys()) # set temperatures (round numbers like 15.0 or 22.5 etc)
 
-
     #------------------------------------
     # calculate using calibration
     absorbed, reflected, emitted, pumped, dissipated = {}, {}, {}, {}, {}
@@ -117,7 +116,7 @@ def main():
             for j in xrange(len(current[T])):
                 # note: `` converts numbers into writable text
                 line = ','.join([`T`,`meantemp[T].v()`,`meantemp[T].e()`,
-                                 `current_set[T]`,`current[T][j].v()`,`current[T][j].e()`,
+                                 `current_set[T][j]`,`current[T][j].v()`,`current[T][j].e()`,
                                  `pumped[T][j].v()`,`pumped[T][j].e()`,
                                  `reflected[T][j].v()`,`reflected[T][j].e()`,
                                  `absorbed[T][j].v()`,`absorbed[T][j].e()`,
