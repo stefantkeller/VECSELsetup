@@ -48,6 +48,8 @@ def main():
     # see whether calibration is already evaluated, do it if not
     if not exists(calib_folder+'/LUTs'):
         calibrate(calib_folder)
+    else:
+        print 'using calibration',calib_folder
 
     # see whether spectra are evaluated, do it if not
     with open(logfile, 'rb') as lf:
