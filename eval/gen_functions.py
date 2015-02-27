@@ -131,7 +131,7 @@ def extract(logfile,identifiers=['Current','Pump','Refl','Laser']):
                 #curr = LUT(c_got,index_list)
                 #curr = ev.stderrvallist(curr)
                 #curr -= ev.min_(curr)[0]
-                current[T] = curr - ev.min(curr)[0]
+                current[T] = curr# - ev.min(curr)[0]
                 
             if bpump:
                 if sanitize(logfile_version)=='p1':
@@ -144,7 +144,7 @@ def extract(logfile,identifiers=['Current','Pump','Refl','Laser']):
                 #pmp = LUT(pmp,index_list)
                 #pmp = ev.stderrvallist(pmp)
                 #pmp -= ev.min_(pmp)[0]
-                pump[T] = pmp - ev.min(pmp)[0]
+                pump[T] = pmp# - ev.min(pmp)[0]
                 
             if brefl:
                 rf = pwr_root+row[cid['Refl']]
@@ -154,7 +154,7 @@ def extract(logfile,identifiers=['Current','Pump','Refl','Laser']):
                 #refl = LUT(refl,index_list)
                 #refl = ev.stderrvallist(refl)
                 #refl -= ev.min_(refl)[0]
-                reflection[T] = refl - ev.min(refl)[0]
+                reflection[T] = refl# - ev.min(refl)[0]
                 
             if blaser:
                 lf = pwr_root+row[cid['Laser']]
@@ -164,7 +164,7 @@ def extract(logfile,identifiers=['Current','Pump','Refl','Laser']):
                 #las = LUT(las, index_list)
                 #las = ev.stderrvallist(las)
                 #las -= ev.min_(las)[0]
-                emission[T] = las - ev.min(las)[0]
+                emission[T] = las# - ev.min(las)[0]
                 
             if btemperature:
                 tf = pwr_root+row[cid['Temp_live']]
