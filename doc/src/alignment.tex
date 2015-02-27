@@ -11,26 +11,91 @@ With these two irises the position of the HeNe source is detached from the beam 
 \label{img:beamline}
 \end{figure}
 
-In order to align the different parts we employ a HeNe laser.
-Figure~\ref{img:beamline} shows the beam line orthogonal to the sample surface.
-The beam line is defined by two removable magnetic posts.
-These posts allow us to remove and replace a mount reproducible.
-The beam line is ultimately defined by two irises.
-As such, we can place the HeNe source anywhere on the table;
-we simply have to guide its beam through these two irises.
+The alignment process comes in two steps:
+a rough base alignment
+and a fine tuning.
+For the first step
+align the optical elements
+along the emission path
+to be orthogonal to it.
+With the equipment
+orthogonal to the beam path
+we arrive
+at a well-defined state,
+which is easy to reproduce.
 
-For the alignment,
-in a first stage,
-we align the sample orthogonal to said beam line:
-We remove -- or flip, Fig.~\ref{img:cavity_flipped} --
+First we define the beam line.
+It is defined by
+two removable magnetic posts,
+Fig.~\ref{img:beamline}.
+These posts allow us to remove and replace a mount reproducible.
+Two irises
+define the beam line height.
+This height
+is arbitrary,
+but in order to have
+a reproducible setup
+pick a height
+and use this iris
+as a reference tool.
+Use the HeNe laser
+for the rough alignment:
+place it anywhere
+on the table.
+Send its beam
+through the two irises;
+using mirrors.
+The two irises
+are all we need
+in order to define
+the beam line.
+With them
+the setup is detached from the rest
+of the table.
+
+Place the sample
+on the heat sink
+and align it
+orthogonal to the aforementioned beam line:
+Remove -- or flip, Fig.~\ref{img:cavity_flipped} --
 all other components along the beam line
 and leave only the sample.
-We adjust the orientation of the sample such that
-the back-reflection is directed at the HeNe, Fig.~\ref{img:HeNe}.
-Once the sample is aligned
-we place the output coupler
-back in the beam path
-and repeat the same procedure.
+Adjust the orientation of the sample such that
+the back-reflection is directed at the HeNe, Fig.~\ref{img:HeNe},
+now it is in a well-defined configuration.
+Once the sample is aligned,
+place the output coupler
+back in the beam path.
+Repeat the same procedure.
+Careful:
+since the output coupler is curved
+you will find two reflections.
+One looks like in Fig.~\ref{img:HeNe}.
+This you can align by tilting
+the output coupler;
+like a regular mirror.
+The second reflection
+is divergent.
+Bring it to the center
+using the xyz-translation-stage.
+
+The last equipment
+in this beam line
+is the lens
+after the output coupler.
+It -- in combination with the output coupler --
+images the sample
+onto the camera
+you'll use later.
+Align the lens orthogonal
+and choose its position
+with appropriate distance
+from the output couper
+and camera.
+Appropriate means
+the picture on the camera is in focus
+and there is enough room
+for all the equipment.
 
 \begin{figure}
 \centering
@@ -50,24 +115,41 @@ it thus helps for reproduciblity.}
 \label{img:HeNe}
 \end{figure}
 
-In a last step we have to irradiate the sample with the 980~nm pump.
-A camera along the emission beam line
-sees the photoluminescence resulting from the pump on the sample.
-This camera is equipped with a long-pass filter
+For the fine tuning
+we need the pump light
+and look at the photoluminescence
+of the sample.
+The camera along the emission beam line,
+mentioned above,
+sees the photoluminescence
+resulting from the pump on the sample.
+Attach a long-pass filter
+to the camera
 in order to see only the photoluminescence
 and not the pump light.
-With this camera,
+With this camera --
 initially,
+thanks to the rough alignment --
 we see two spots corresponding to
-pump and reflection from the output coupler.
-Because of the aforementioned alignment with the HeNe laser
-these two spots should already be close,
-see Fig.~\ref{img:spot_overlap}.
-We bring these two spots to overlap,
+pump and reflection from the output coupler,
+Fig.~\ref{img:spot_overlap}.
+If you don't see two spots
+the rough alignment
+with the HeNe
+was not precise enough;
+repeat.
+Don't forget to test whether
+the sample really is
+in focus of the camera.
+Otherwise,
+of course you won't see anything.
+Bring these two spots to overlap,
 using the xyz-stage of the output coupler.
 Once the two spots do overlap,
 and the pump is above threshold,
 the sample starts lasing.
+Congratulations,
+the setup is aligned.
 
 \begin{figure}
 \centering
@@ -94,6 +176,34 @@ and adjust for maximum output power.}
 \label{img:spot_overlap}
 \end{figure}
 
+Now you have to make sure
+the beam sampler
+for the pump and reflection detectors
+actually send off
+the sampled beam
+towards the aperture
+of the detectors.
+If you move the pump beam sampler,
+the spot moves
+on the sample,
+detuning the alignment
+just described;
+repeat.
+An additional reminder
+about some obvious alignment necessities:
+The distance between
+output coupler and sample
+has to be smaller than
+the radius of curvature
+of the output coupler.
+The distance between
+pump and sample
+has to match
+the focal length
+of the pump lens
+(provided the light is collimated
+after the first lens).
+
 Figure~\ref{img:overview} shows an overview of the different components.
 The pump light is directed via fiber to a lens system that images the light onto the sample.
 With beam sampler BS$_p$ we extract a fraction of the pump and direct it to detector det$_p$.
@@ -115,6 +225,57 @@ we avoid high power readings on the detectors.
 \label{img:overview}
 \end{figure}
 
+Before you record a measurement
+you want to optimize the alignment once more:
+place the power meter
+in the emission path,
+set the pump to a value
+above threshold,
+and optimize
+for maximum output power.
+Don't move the sample,
+only adjust
+the xyz-stage
+of the output coupler,
+and the distance between
+pump and sample.
+For measurements
+that record the spectral information,
+place also the assigned beam sampler
+in the emission path.
 
-
-
+The fiber delivering the light
+to the spectrometer
+is at a distance
+from the sample
+similar to the camera;
+in the focus of the emission.
+In order to have access
+to both the camera
+and the spectrometer
+within the same setup,
+several mirrors
+are flippable
+to use the equipment needed for the alignment step
+you are at.
+Coupling the emission
+into the fiber
+is straight forward;
+but can be frustrating,
+because this alignment is delicate.
+You have to hit the position of the fiber core
+and you have to hit
+with normal incidence.
+The angular component
+is tricky.
+We use a multimode fiber,
+those allow for a larger margin of error.
+Use the IR-viewer or an IR-card
+to visualize the emission beam,
+mount the fiber
+such that is along this beam line,
+and direct the beam onto the fiber.
+Once you have a reading
+on the spectrometer
+adjust the alignment
+for maximum signal.
