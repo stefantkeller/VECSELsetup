@@ -290,18 +290,29 @@ different modes are realized.
 The global maximum
 performes \emph{a lot} better
 than the local ones,
-but it's easy to miss it.
+but it's easy to miss.
 The heat sink temperature
 may increase when you optimize for too long
 (and thus irradiate the pump beam for a long time).
 As a result the VECSEL performance
 decreases and you are likely
-to chase a value that isn't possible anymore
+to chase a value that isn't possible anymore,
 given the new temperature.
 This may lead you to find the ``maximum'' off center,
 i.e. not at the maximum.
-Take short breaks during alignment,
+As a remedy,
+take short breaks during the alignment,
 or actively modify the temperature:
 the maximum should be maximal also for other temperatures.
-Random fluctuations may also fake a wrong maximum.
+The emission power fluctuates.
+This noise can pile up;
+and since you scan along one parameter axis
+this may also fake a wrong maximum.
+In order to have a picture in mind
+how that might look like,
+google for ``random walk''.
+You can't do anything against these error sources.
+Be aware of them
+and with experience in alignment
+you will develop a sense for their impact.
 
