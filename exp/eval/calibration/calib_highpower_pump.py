@@ -1,14 +1,17 @@
 #! /usr/bin/python2.7
 # -*- coding: utf-8 -*-
 
+import numpy as np
 import matplotlib.pyplot as plt
 
-import errorvalues as ev # github.com/stefantkeller/errorvalues
+import ErrorValues as ev
+from STK_py_generals.general_functions import split2dict, find_random_duplicates
 
-from VECSELsetup.eval.varycolor import varycolor
-from VECSELsetup.eval.gen_functions import extract
+from varycolor import varycolor
 
-#from sys import exit
+from LL_functions import load, extract
+
+from sys import exit
 
 
 def calibrate_pump(logfile1,logfile2,calibfile_pp,calibplot_pp,calibfile_cp,calibplot_cp):
@@ -106,7 +109,10 @@ def calibrate_pump(logfile1,logfile2,calibfile_pp,calibplot_pp,calibfile_cp,cali
     plt.clf()
     plt.subplot(1,1,1)
     
-    pump_ = current2[T2]*m1+q1
+
+    pump_ = ev.errvallist([ev.max(ev.errvallist([0,p]),False) for p in current2[T2]*m1+q1]) # ignore values below pump threshold
+    nzeros = np.sum(pump_.v()==0)
+
     
     xmin, xmax = ev.min(pump2[T2],False), ev.max(pump2[T2],False)
     ymin, ymax = ev.min(pump_,False), ev.max(pump_,False)
@@ -115,7 +121,7 @@ def calibrate_pump(logfile1,logfile2,calibfile_pp,calibplot_pp,calibfile_cp,cali
     textx, texty = xmax.v()/4, ymax.v()*2/3
     
     
-    q3,m3 = ev.linreg(pump2[T2].v(),pump_.v(),pump_.e())
+    q3,m3 = ev.linreg(pump2[T2].v()[nzeros:],pump_.v()[nzeros:],pump_.e()[nzeros:])
     
     plt.errorbar(pump2[T2].v(),pump_.v(),
                  xerr=pump2[T2].e(),yerr=pump_.e(),
