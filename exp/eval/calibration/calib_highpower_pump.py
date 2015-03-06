@@ -1,6 +1,7 @@
 #! /usr/bin/python2.7
 # -*- coding: utf-8 -*-
 
+import numpy as np
 import matplotlib.pyplot as plt
 
 import errorvalues as ev # github.com/stefantkeller/errorvalues
