@@ -1,17 +1,14 @@
 #! /usr/bin/python2.7
 # -*- coding: utf-8 -*-
 
-import numpy as np
 import matplotlib.pyplot as plt
 
-import ErrorValues as ev
-from STK_py_generals.general_functions import split2dict, find_random_duplicates
+import errorvalues as ev # github.com/stefantkeller/errorvalues
 
-from varycolor import varycolor
+from VECSELsetup.eval.varycolor import varycolor
+from VECSELsetup.eval.gen_functions import extract
 
-from LL_functions import load, extract
-
-from sys import exit
+#from sys import exit
 
 
 def calibrate_pump(logfile1,logfile2,calibfile_pp,calibplot_pp,calibfile_cp,calibplot_cp):
