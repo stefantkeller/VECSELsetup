@@ -176,6 +176,9 @@ class SpectroMeter(object):
     def close(self):
         pass
 
+    def set_sensitivity(self,sensitivity=None):
+        return sensitivity
+
     def set_wavelength_center(self,lambd):
         self._centerwl = lambd
         return lambd

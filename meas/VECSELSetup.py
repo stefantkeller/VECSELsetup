@@ -356,6 +356,11 @@ class SpectroMeter(object):
         #GPIB.write('loc'), should be in regular .close():
         self._osa.close()
 
+    def set_sensitivity(self,sensitivity=None):
+        if sensitivity is not None:
+            self._write('SENS {0}DBM'.format(sensitivity))
+        return float(self._query('SENS?'.format(sensitivity)))
+
     def set_wavelength_center(self,lambd):
         return float(self._query('CENTERWL {0}NM;CENTERWL?'.format(lambd)))
 
