@@ -8,7 +8,7 @@ from os import path, makedirs
 import time
 
 import numpy as np
-import matplotlib
+
 import matplotlib.pyplot as plt
 
 
@@ -119,6 +119,7 @@ def main():
     # spectrometer
     use_spectrometer = True
     lambda_span = 30 # nm; sym around lambda_laser
+    spectrometer_sensitivity = -60 # dBm; set None for default value
 
     # define the measurement experience
     # - plotting:
@@ -195,6 +196,7 @@ def main():
         osa = V.SpectroMeter(rm,u'GPIB0::9::INSTR')
         osa.set_wavelength_center(lambda_laser)
         osa.set_wavelength_span(lambda_span)
+        osa.set_sensitivity(spectrometer_sensitivity)
         sc = MP.SpectrumCollector(osa,identifier='OSA',meas_path=path_to_meas_files,spect_path=path_to_spec_files)
 
     # pump power
