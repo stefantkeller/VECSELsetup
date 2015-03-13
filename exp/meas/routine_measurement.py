@@ -139,6 +139,12 @@ def main():
     shuffle_pump = True
 
 
+    # pump heats the heat sink
+    # apply the following amount of seconds of 0A before setting a new pump
+    # this helps in order to cool down
+    extra_cooling_delay = 0 #s
+
+
     # ==========================================================================
     #
     # /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
@@ -174,7 +180,7 @@ def main():
     temperatures = F.one_decimal( np.linspace(heatsink_start, heatsink_end, heatsink_npoints) )
     temperatures = F.wrap_around(temperatures,room_temperature) # comment out if you don't want it to wrap around
     #temperatures = [10.0, 11.0, 25.0, 26.0, 40.0, 41.0] # for manual intervention: no temperature twice! script will overwrite the measurements!
-    print temperatures # verify after measurement has started
+    print 'requested temperatures in degC:',temperatures # verify after measurement has started
 
     laser_current = F.one_decimal( np.linspace(pump_start, pump_end, pump_npoints) )
     laser_current = list(laser_current)*n_repetitions # dirty but quick; works only for list's, numpy.array's actually multiply the value!
@@ -240,12 +246,13 @@ def main():
         if use_spectrometer: headstr += u'Spectra,'
         headstr += u'Time_stamp'
         headstr += u';delay_between_meas={0}'.format(delay_between_meas)
+        headstr += u';extra_cooling_delay={0}'.format(extra_cooling_delay)
         headstr += u';heatsink_wait_after_setting={0}'.format(heatsink_wait_after_setting)
         headstr += u';n_repetitions={0}'.format(n_repetitions)
         headstr += u';pwr_folder={0}'.format(pwr_folder)
         if use_spectrometer: headstr += u';spectr_folder={0}'.format(spectr_folder)
         headstr += u';add_info={0}'.format(add_info)
-        headstr += u';logfile_version={0}'.format(3)
+        headstr += u';logfile_version={0}'.format(4)
         logfile.write(headstr+u'\n')
         # As long as we don't close the file, the written content is kept in a buffer.
         # This buffer is only actually 'written' once the buffer is full.
@@ -276,6 +283,10 @@ def main():
             t_m0 = time.time()
             ps.on()
             for c in laser_current:
+                if extra_cooling_delay>0:
+                    textra0 = time.time()
+                    cextra = ps.set_current(0)
+                    time.sleep(np.max([0,extra_cooling_delay-(textra0-time.time())]))
                 c_ = ps.set_current(c)
                 print int(j/ctot*100*10)/10, # show progress of measurement; shows script is still alive
                 j += 1
